@@ -9,11 +9,9 @@
 :root {
     --eerie-black: #1C1C1C;
     --platinum: #DADDD8;
-    --alabaster: #ECEBE4;
-    --anti-flash-white: #EEF2F0;
     --ghost-white: #FAFAFF;
 }
 
 body{
-    background-color: var(--anti-flash-white);
+    background-color: var(--platinum);
 }
