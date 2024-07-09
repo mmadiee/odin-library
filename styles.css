@@ -1,17 +1,87 @@
-/*Logo Fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Montserrat&display=swap');
-
-/*Main Font*/
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
-
+/* Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-    --eerie-black: #1C1C1C;
-    --platinum: #DADDD8;
-    --ghost-white: #FAFAFF;
+    --raisin-black: #2a201e;
+    --bone: #DDD3C5;
 }
 
 body{
-    background-color: var(--platinum);
+    background-color: var(--bone);
+    font-family: "Montserrat", sans-serif;
+    color: var(--raisin-black);
+    margin: 0;
+}
+
+.container{
+    height: 100vh; 
+    display: grid;
+    grid-template-rows: 13% 80% 7%;
+}
+
+.header {
+    border-bottom: 1px solid var(--raisin-black);
+    grid-row: 1 /2;
+    display: flex;
+    padding: 0 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo{
+    font-family: "Baskerville";
+    font-size: 2rem;
+}
+
+.add-btn{
+    background-color: transparent;
+    color: var(--raisin-black);
+    font-family: inherit;
+    font-weight: bold;
+    border: 1px solid var(--raisin-black);
+    cursor: pointer;
+    padding: 1.25rem;
+    width: 150px;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-btn:hover{
+    background-color: var(--raisin-black);
+    color: var(--bone);
+    transition: 0.30s;
+}
+
+.add-btn:active{
+    background-color: hsl(10, 17%, 60%);
+}
+
+
+.main {
+    grid-row: 2 / 3;
+}
+
+.footer {
+    border-top: 1px solid var(--raisin-black);
+    grid-row: 3 / 4;
+}
+
+.header .logo,
+.footer {
+    display: flex;
+    align-items: center;
+}
+
+.footer {
+    justify-content: center;
+    font-size: large;
+
+}
+
+.github-mark {
+    padding-left: 10px;
 }
