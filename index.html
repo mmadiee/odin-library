@@ -38,19 +38,43 @@
               <input type="text" name="author" id="author" />
               <label for="page-count">Page Count</label>
               <input type="number" name="page-count" id="page-count" min="0" />
-              <div class="checkbox">
-                <label for="haveRead">Mark as Finished</label>
-                <input type="checkbox" name="haveRead" id="haveRead" />
-              </div>
+              <fieldset>
+                <legend>Progress</legend>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="toBeRead"
+                    name="progress"
+                    value="To Be Read"
+                  />
+                  <label for="html">To Be Read</label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="ongoing"
+                    name="progress"
+                    value="ongoing"
+                  />
+                  <label for="ongoing">Ongoing</label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="finished"
+                    name="progress"
+                    value="finished"
+                  />
+                  <label for="finished">Finished</label>
+                </div>
+              </fieldset>
               <button>Add to Library</button>
             </form>
           </div>
         </div>
       </div>
       <div class="main">
-        <div class="shelf" id="book-list">
-          
-        </div>
+        <div class="shelf" id="book-list"></div>
       </div>
       <div class="footer">
         <p>© 2024 mmadiee</p>
