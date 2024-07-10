@@ -1,87 +1,213 @@
 /* Fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 :root {
-    --raisin-black: #2a201e;
-    --bone: #DDD3C5;
+  --raisin-black: #2a201e;
+  --bone: #ddd3c5;
+  --checkbox-size: 25px;
+  --checkbox-border-width: 1px;
 }
 
-body{
-    background-color: var(--bone);
-    font-family: "Montserrat", sans-serif;
-    color: var(--raisin-black);
-    margin: 0;
+body {
+  background-color: var(--bone);
+  font-family: "Montserrat", sans-serif;
+  color: var(--raisin-black);
+  margin: 0;
 }
 
-.container{
-    height: 100vh; 
-    display: grid;
-    grid-template-rows: 13% 80% 7%;
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 13% 80% 7%;
 }
 
 .header {
-    border-bottom: 1px solid var(--raisin-black);
-    grid-row: 1 /2;
-    display: flex;
-    padding: 0 100px;
-    justify-content: space-between;
-    align-items: center;
+  border-bottom: 1px solid var(--raisin-black);
+  grid-row: 1 /2;
+  display: flex;
+  padding: 0 100px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header .logo{
-    font-family: "Baskerville";
-    font-size: 2rem;
+.header .logo {
+  font-family: "Baskerville";
+  font-size: 2rem;
 }
 
-.add-btn{
-    background-color: transparent;
-    color: var(--raisin-black);
-    font-family: inherit;
-    font-weight: bold;
-    border: 1px solid var(--raisin-black);
-    cursor: pointer;
-    padding: 1.25rem;
-    width: 150px;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.add-btn {
+  background-color: transparent;
+  color: var(--raisin-black);
+  font-family: inherit;
+  font-weight: bold;
+  border: 1px solid var(--raisin-black);
+  cursor: pointer;
+  padding: 1.25rem;
+  width: 150px;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-.add-btn:hover{
-    background-color: var(--raisin-black);
-    color: var(--bone);
-    transition: 0.30s;
+.add-btn:hover {
+  background-color: var(--raisin-black);
+  color: var(--bone);
+  transition: 0.3s;
 }
 
-.add-btn:active{
-    background-color: hsl(10, 17%, 60%);
+.add-btn:active {
+  background-color: hsl(10, 17%, 60%);
 }
-
 
 .main {
-    grid-row: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 .footer {
-    border-top: 1px solid var(--raisin-black);
-    grid-row: 3 / 4;
+  border-top: 1px solid var(--raisin-black);
+  grid-row: 3 / 4;
 }
 
 .header .logo,
 .footer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .footer {
-    justify-content: center;
-    font-size: large;
-
+  justify-content: center;
+  font-size: large;
 }
 
 .github-mark {
-    padding-left: 10px;
+  padding-left: 10px;
+}
+
+/* Modal */
+/* background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--bone);
+  margin: 5% auto;
+  padding: 10px 20px 20px 20px;
+  border: 2px solid var(--raisin-black);
+  width: 35%;
+}
+
+/* Close Button */
+.close {
+  color: var(--raisin-black);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: hsl(10, 17%, 60%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close:active {
+  color: hsl(10, 17%, 40%);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* Style text and number inputs */
+input[type="text"],
+input[type="number"] {
+  font-family: inherit;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid var(--raisin-black);
+  font-size: 16px;
+  background-color: var(--bone);
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+}
+
+/* Style the checkbox input */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  background-color: var(--bone);
+  border: var(--checkbox-border-width) solid var(--raisin-black);
+  cursor: pointer;
+  margin: 5px 0;
+  position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "\2713";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--raisin-black);
+  font-size: calc(var(--checkbox-size) - 6px);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+form button {
+  font-family: inherit;
+  font-weight: bold;
+  background-color: transparent;
+  width: 200px;
+  height: 30px;
+  border: 1px solid var(--raisin-black);
+  align-self: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--raisin-black);
+  color: var(--bone);
+  transition: 0.3s;
+}
+
+form button:active {
+  background-color: hsl(10, 17%, 60%);
+}
+
+/* Style the labels */
+label {
+  font-weight: bold;
+}
+
+label:not(.checkbox label) {
+    margin-top: 10px;
 }
