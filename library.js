@@ -17,6 +17,10 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+
+  if (event.target == bookInfoModal) {
+    bookInfoModal.style.display = "none";
+  }
 };
 
 //Library
@@ -51,6 +55,7 @@ function displayBooks() {
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
+    bookCard.id = 'toggleBook'; 
 
     const titleDiv = document.createElement("div");
     titleDiv.classList.add('title-div')
@@ -88,7 +93,19 @@ function displayBooks() {
     card.appendChild(bookCard)
     card.appendChild(info);
     shelf.appendChild(card);
+
+    bookCard.onclick = function () {
+      bookInfoModal.style.display = "block";
+    };
+    
   });
 }
 
 displayBooks();
+
+let span1 = document.getElementsByClassName("close")[1];
+
+span1.onclick = function () {
+  bookInfoModal.style.display = "none";
+};
+

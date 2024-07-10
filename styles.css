@@ -128,16 +128,15 @@ body {
 }
 
 form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 }
 
 /* Style text and number inputs */
 input[type="text"],
 input[type="number"] {
   font-family: inherit;
-  width: 100%;
   padding: 5px;
   margin: 5px 0;
   border: 1px solid var(--raisin-black);
@@ -154,7 +153,6 @@ input[type="number"]:focus {
 fieldset {
   border: 1px solid var(--raisin-black);
   margin: 10px 0;
-  width: 100%;
   padding: 5px;
   display: flex;
   justify-content: space-evenly;
@@ -179,9 +177,9 @@ form button {
   width: 200px;
   height: 30px;
   border: 1px solid var(--raisin-black);
-  align-self: center;
   margin-top: 20px;
   cursor: pointer;
+  align-self: center;
 }
 
 form button:hover {
@@ -254,4 +252,30 @@ label:not(.option label) {
 .book-info p {
   margin: 7px 0;
   font-size: smaller;
+}
+
+#bookInfoModal .btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#deleteBook:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5); 
+  transition: 0.35s;
+  background-color: var(--bone);
+  color: var(--raisin-black);
+}
+
+#updateBook:hover {
+
+  cursor: pointer;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5); 
+  transition: 0.35s;
+}
+
+#updateBook {
+  background-color: var(--raisin-black);
+  color: var(--bone);
 }

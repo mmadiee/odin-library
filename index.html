@@ -75,6 +75,50 @@
       </div>
       <div class="main">
         <div class="shelf" id="book-list"></div>
+        <!-- Book Info -->
+        <div id="bookInfoModal" class="modal">
+          <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="#" method="post">
+                  <fieldset>
+                    <legend>Progress</legend>
+                    <div class="option">
+                      <input
+                        type="radio"
+                        id="toBeRead"
+                        name="progress"
+                        value="To Be Read"
+                      />
+                      <label for="html">To Be Read</label>
+                    </div>
+                    <div class="option">
+                      <input
+                        type="radio"
+                        id="ongoing"
+                        name="progress"
+                        value="ongoing"
+                      />
+                      <label for="ongoing">Ongoing</label>
+                    </div>
+                    <div class="option">
+                      <input
+                        type="radio"
+                        id="finished"
+                        name="progress"
+                        value="finished"
+                      />
+                      <label for="finished">Finished</label>
+                    </div>
+                  </fieldset>
+                  <div class="btns">
+                    <button id="deleteBook">Delete Book</button>
+                    <button id="updateBook">Update Progress</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
       </div>
       <div class="footer">
         <p>© 2024 mmadiee</p>
