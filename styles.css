@@ -208,5 +208,59 @@ label {
 }
 
 label:not(.checkbox label) {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+/* Main: Shelf for Books */
+.shelf {
+  margin: 50px 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 140px));
+  grid-template-rows: repeat(auto-fit, minmax(170px, 220px));
+  gap: 20px;
+}
+
+.book-card {
+  border: 0.5px solid var(--raisin-black);
+  height: 200px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.book-card:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5); 
+  transition: 0.35s;
+}
+
+.book-card:active {
+  box-shadow: 5px 5px var(--raisin-black); 
+}
+
+
+
+.author-div{
+  background-color: var(--raisin-black);
+  color: var(--bone);
+}
+
+.title-div h4,
+.author-div p{
+  margin-top: 3px;
+}
+
+.title-div,
+.author-div {
+  padding: 5px;
+}
+
+.book-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.book-info p {
+  margin: 7px 0;
+  font-size: smaller;
 }

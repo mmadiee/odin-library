@@ -1,9 +1,9 @@
 // MODAL
-var modal = document.getElementById("newBookModal");
+let modal = document.getElementById("newBookModal");
 
-var btn = document.getElementById("toggleModal");
+let btn = document.getElementById("toggleModal");
 
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
   modal.style.display = "block";
@@ -28,12 +28,67 @@ function Book(title, author, numOfPages, haveRead) {
 }
 
 const myLibrary = [
-  new Book("Gideon the Ninth", "Tamsyn Muir", 496, "Not Finished"),
-  new Book("The Priory of the Orange Tree", "Samantha Shannon", 880, "Finished"),
-  new Book("The Shadow of Kiyoshi", "F.C. Yee", 352, "Finished")
+  new Book("Dowry of Blood", "S.T Gibson", 304, "TBR"),
+  new Book("Gideon the Ninth", "Tamsyn Muir", 496, "Ongoing"),
+  new Book(
+    "The Priory of the Orange Tree",
+    "Samantha Shannon",
+    880,
+    "Finished"
+  ),
+  new Book("The Shadow of Kiyoshi", "F.C. Yee", 352, "Finished"),
 ];
 
-function addBookToLibrary() {
+function addBookToLibrary() {}
 
+function displayBooks() {
+  const shelf = document.getElementById("book-list");
+  shelf.innerHTML = "";
+
+  myLibrary.forEach((book) => {
+    const card = document.createElement("div");
+    card.classList.add("book-area");
+
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
+
+    const titleDiv = document.createElement("div");
+    titleDiv.classList.add('title-div')
+
+    const authorDiv = document.createElement("div");
+    authorDiv.classList.add("author-div");
+
+    const bookIcon = document.createElement("span");
+    bookIcon.classList.add('material-symbols-outlined');
+    bookIcon.textContent = `import_contacts`;
+
+    const title = document.createElement("h4");
+    title.textContent = book.title;
+
+    const author = document.createElement("p");
+    author.textContent = `${book.author}`;
+
+    const info = document.createElement("div");
+    info.classList.add("book-info");
+
+    const pages = document.createElement("p");
+    pages.textContent = ` ${book.numOfPages}p.`;
+
+    const status = document.createElement("p");
+    status.textContent = `${book.haveRead}`;
+
+    titleDiv.appendChild(bookIcon);
+    titleDiv.appendChild(title);
+    authorDiv.appendChild(author);
+    info.appendChild(pages);
+    info.appendChild(status);
+
+    bookCard.appendChild(titleDiv);
+    bookCard.appendChild(authorDiv);
+    card.appendChild(bookCard)
+    card.appendChild(info);
+    shelf.appendChild(card);
+  });
 }
 
+displayBooks();
