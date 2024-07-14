@@ -7,11 +7,6 @@ let span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
   modal.style.display = "block";
-  const progressInput = document.querySelector(
-    'input[name="progress"]:checked'
-  );
-
-  progressInput.checked = false;
 };
 
 span.onclick = function () {
@@ -28,6 +23,58 @@ window.onclick = function (event) {
   }
 };
 
+// Function to toggle progress status
+function toggleProgress(bookIndex) {
+  const book = myLibrary[bookIndex];
+
+  switch (book.haveRead) {
+    case "TBR":
+      book.haveRead = "Reading";
+      break;
+    case "Reading":
+      book.haveRead = "Finished";
+      break;
+    case "Finished":
+      book.haveRead = "TBR";
+      break;
+    default:
+      book.haveRead = "TBR";
+      break;
+  }
+}
+
+// Function to update the UI based on current book data
+function updateUI(bookIndex) {
+  const book = myLibrary[bookIndex];
+  const updateButton = document.getElementById("updateProgress");
+
+  switch (book.haveRead) {
+    case "TBR":
+      updateButton.textContent = "Mark as Reading";
+      break;
+    case "Reading":
+      updateButton.textContent = "Mark as Finished";
+      break;
+    case "Finished":
+      updateButton.textContent = "Mark as TBR";
+      break;
+    default:
+      updateButton.textContent = "Mark as TBR";
+      break;
+  }
+}
+
+// Event listener for updating progress
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("update-progress-btn")) {
+    const bookIndex = event.target.dataset.index;
+    toggleProgress(bookIndex);
+    updateUI(bookIndex);
+    displayBooks(); // Refresh the displayed books
+    bookInfoModal.style.display = "none"; // Close modal after update
+  }
+});
+
 //Library
 function Book(title, author, numOfPages, haveRead) {
   this.title = title;
@@ -38,7 +85,7 @@ function Book(title, author, numOfPages, haveRead) {
 
 const myLibrary = [
   new Book("Dowry of Blood", "S.T Gibson", 304, "TBR"),
-  new Book("Gideon the Ninth", "Tamsyn Muir", 496, "Ongoing"),
+  new Book("Gideon the Ninth", "Tamsyn Muir", 496, "Reading"),
   new Book(
     "The Priory of the Orange Tree",
     "Samantha Shannon",
@@ -54,14 +101,11 @@ function addBookToLibrary() {
   const titleInput = document.getElementById("title");
   const authorInput = document.getElementById("author");
   const pageCountInput = document.getElementById("page-count");
-  const progressInput = document.querySelector(
-    'input[name="progress"]:checked'
-  );
 
   const title = titleInput.value;
   const author = authorInput.value;
   const numOfPages = pageCountInput.value;
-  const haveRead = progressInput.value;
+  const haveRead = "TBR";
 
   const newBook = new Book(title, author, numOfPages, haveRead);
   myLibrary.push(newBook);
@@ -72,12 +116,12 @@ function addBookToLibrary() {
   titleInput.value = "";
   authorInput.value = "";
   pageCountInput.value = "";
-  progressInput.checked = false;
 }
 
 function removeBook(index) {
   myLibrary.splice(index, 1);
   displayBooks();
+  bookInfoModal.style.display = "none";
 }
 
 function displayBooks() {
@@ -134,21 +178,11 @@ function displayBooks() {
       deleteBook.setAttribute("data-index", index);
       deleteBook.onclick = function () {
         removeBook(index);
-        modal.style.display = "none";
-        bookInfoModal.style.display = "none";
       };
 
-      // Set radio button based on book's haveRead status
-      const progressRadios = document.querySelectorAll(
-        'input[name="progress"]'
-      );
-      progressRadios.forEach((radio) => {
-        if (radio.value === book.haveRead) {
-          radio.checked = true;
-        } else {
-          radio.checked = false;
-        }
-      });
+      // Add data-index attribute to the update progress button
+      const updateProgress = document.getElementById("updateProgress");
+      updateProgress.setAttribute("data-index", index);
 
       bookInfoModal.style.display = "block";
     };

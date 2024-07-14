@@ -38,37 +38,9 @@
               <input type="text" name="author" id="author" />
               <label for="page-count">Page Count</label>
               <input type="number" name="page-count" id="page-count" min="0" />
-              <fieldset>
-                <legend>Progress</legend>
-                <div class="option">
-                  <input
-                    type="radio"
-                    id="toBeRead"
-                    name="progress"
-                    value="TBR"
-                  />
-                  <label for="html">To Be Read</label>
-                </div>
-                <div class="option">
-                  <input
-                    type="radio"
-                    id="ongoing"
-                    name="progress"
-                    value="Ongoing"
-                  />
-                  <label for="ongoing">Ongoing</label>
-                </div>
-                <div class="option">
-                  <input
-                    type="radio"
-                    id="finished"
-                    name="progress"
-                    value="Finished"
-                  />
-                  <label for="finished">Finished</label>
-                </div>
-              </fieldset>
-              <button type="button" onclick="addBookToLibrary()">Add to Library</button>
+              <button type="button" onclick="addBookToLibrary()">
+                Add to Library
+              </button>
             </form>
           </div>
         </div>
@@ -78,47 +50,22 @@
         <!-- Book Info -->
         <div id="bookInfoModal" class="modal">
           <!-- Modal content -->
-              <div class="modal-content">
-                <span class="close">&times;</span>
-                <form action="#" method="post">
-                  <fieldset>
-                    <legend>Progress</legend>
-                    <div class="option">
-                      <input
-                        type="radio"
-                        id="toBeRead"
-                        name="progress"
-                        value="TBR"
-                      />
-                      <label for="html">To Be Read</label>
-                    </div>
-                    <div class="option">
-                      <input
-                        type="radio"
-                        id="ongoing"
-                        name="progress"
-                        value="Ongoing"
-                      />
-                      <label for="ongoing">Ongoing</label>
-                    </div>
-                    <div class="option">
-                      <input
-                        type="radio"
-                        id="finished"
-                        name="progress"
-                        value="Finished"
-                      />
-                      <label for="finished">Finished</label>
-                    </div>
-                  </fieldset>
-                  <div class="btns">
-                    <button type="button" id="deleteBook">Delete Book</button>
-                    <button type="button" id="updateBook">Update Progress</button>
-                  </div>
-                </form>
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="#" method="post">
+              <div class="btns">
+                <button
+                  type="button"
+                  class="update-progress-btn"
+                  id="updateProgress"
+                >
+                  Mark as Reading
+                </button>
+                <button type="button" id="deleteBook">Delete Book</button>
               </div>
-            </div>
+            </form>
           </div>
+        </div>
       </div>
       <div class="footer">
         <p>© 2024 mmadiee</p>

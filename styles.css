@@ -255,8 +255,8 @@ label:not(.option label) {
 
 #bookInfoModal .btns {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 10px;
 }
 
 #deleteBook:hover {
@@ -267,14 +267,14 @@ label:not(.option label) {
   color: var(--raisin-black);
 }
 
-#updateBook:hover {
+#updateProgress:hover {
 
   cursor: pointer;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.5); 
   transition: 0.35s;
 }
 
-#updateBook {
+#updateProgress {
   background-color: var(--raisin-black);
   color: var(--bone);
 }
