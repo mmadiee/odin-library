@@ -70,11 +70,16 @@ function addBookToLibrary() {
   progressInput.checked = false;
 }
 
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  displayBooks();
+}
+
 function displayBooks() {
   const shelf = document.getElementById("book-list");
   shelf.innerHTML = "";
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const card = document.createElement("div");
     card.classList.add("book-area");
 
@@ -120,6 +125,13 @@ function displayBooks() {
     shelf.appendChild(card);
 
     bookCard.onclick = function () {
+      const deleteBook = document.getElementById("deleteBook");
+      deleteBook.setAttribute('data-index', index);
+      deleteBook.onclick = function () {
+        removeBook(index);
+        modal.style.display = "none";
+        bookInfoModal.style.display = "none";
+      };
       bookInfoModal.style.display = "block";
     };
   });
