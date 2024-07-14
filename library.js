@@ -43,7 +43,32 @@ const myLibrary = [
   new Book("The Shadow of Kiyoshi", "F.C. Yee", 352, "Finished"),
 ];
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  event.preventDefault();
+
+  const titleInput = document.getElementById("title");
+  const authorInput = document.getElementById("author");
+  const pageCountInput = document.getElementById("page-count");
+  const progressInput = document.querySelector(
+    'input[name="progress"]:checked'
+  );
+
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const numOfPages = pageCountInput.value;
+  const haveRead = progressInput.value;
+
+  const newBook = new Book(title, author, numOfPages, haveRead);
+  myLibrary.push(newBook);
+  modal.style.display = "none";
+  displayBooks();
+
+  // Clear the form
+  titleInput.value = "";
+  authorInput.value = "";
+  pageCountInput.value = "";
+  progressInput.checked = false;
+}
 
 function displayBooks() {
   const shelf = document.getElementById("book-list");
@@ -55,16 +80,16 @@ function displayBooks() {
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
-    bookCard.id = 'toggleBook'; 
+    bookCard.id = "toggleBook";
 
     const titleDiv = document.createElement("div");
-    titleDiv.classList.add('title-div')
+    titleDiv.classList.add("title-div");
 
     const authorDiv = document.createElement("div");
     authorDiv.classList.add("author-div");
 
     const bookIcon = document.createElement("span");
-    bookIcon.classList.add('material-symbols-outlined');
+    bookIcon.classList.add("material-symbols-outlined");
     bookIcon.textContent = `import_contacts`;
 
     const title = document.createElement("h4");
@@ -90,14 +115,13 @@ function displayBooks() {
 
     bookCard.appendChild(titleDiv);
     bookCard.appendChild(authorDiv);
-    card.appendChild(bookCard)
+    card.appendChild(bookCard);
     card.appendChild(info);
     shelf.appendChild(card);
 
     bookCard.onclick = function () {
       bookInfoModal.style.display = "block";
     };
-    
   });
 }
 
@@ -108,4 +132,3 @@ let span1 = document.getElementsByClassName("close")[1];
 span1.onclick = function () {
   bookInfoModal.style.display = "none";
 };
-
