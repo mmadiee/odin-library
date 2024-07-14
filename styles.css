@@ -278,3 +278,24 @@ label:not(.option label) {
   background-color: var(--raisin-black);
   color: var(--bone);
 }
+
+/* Scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bone); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--raisin-black); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(10, 17%, 60%); 
+}
