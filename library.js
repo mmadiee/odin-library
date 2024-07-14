@@ -7,6 +7,11 @@ let span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
   modal.style.display = "block";
+  const progressInput = document.querySelector(
+    'input[name="progress"]:checked'
+  );
+
+  progressInput.checked = false;
 };
 
 span.onclick = function () {
@@ -126,12 +131,25 @@ function displayBooks() {
 
     bookCard.onclick = function () {
       const deleteBook = document.getElementById("deleteBook");
-      deleteBook.setAttribute('data-index', index);
+      deleteBook.setAttribute("data-index", index);
       deleteBook.onclick = function () {
         removeBook(index);
         modal.style.display = "none";
         bookInfoModal.style.display = "none";
       };
+
+      // Set radio button based on book's haveRead status
+      const progressRadios = document.querySelectorAll(
+        'input[name="progress"]'
+      );
+      progressRadios.forEach((radio) => {
+        if (radio.value === book.haveRead) {
+          radio.checked = true;
+        } else {
+          radio.checked = false;
+        }
+      });
+
       bookInfoModal.style.display = "block";
     };
   });
